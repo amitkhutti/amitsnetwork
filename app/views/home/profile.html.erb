@@ -1,0 +1,23 @@
+<h1><%= @profile.first_name %> <%= @profile.last_name %> </h1>
+
+<h2>Username: <%= @profile.username %></h2>
+
+<h2>Tags: <%= @profile.tag_list %></h2>
+
+<hr>
+
+<h4> <%= link_to "View followers", followers_path(@profile.username) %>
+
+<% if user_signed_in? %>
+
+<%= render "followbutton" if @profile.id != current_user.id %>
+<hr>
+<%= render "statusbox" %>
+
+<%end%>
+
+<ul id="updates">
+  <% @profile.statuses.order("id desc").each do |status| %>
+  <li><%= status.text %></li>
+  <%end%>
+</ul>

@@ -1,0 +1,14 @@
+<% @status = Status.new %>
+
+<%= form_for @status, :url => url_for(:action=>'poststatus', :controller=>'statuses', :user_id=>current_user.id), 
+:method=>'post', :remote=>true do |f| %>
+
+<div class="field">
+  <%= f.text_field :text , :id=>"statusinput" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Post", :class=>"btn btn-info" %>
+</div>
+
+<%end%>

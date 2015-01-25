@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1>Welcome to Amit's Messenger</h1>
+  <p>Share your thoughts with the world.</p>
+  <p><a class="btn btn-success btn-lg" href="/users/sign_up" role="button">Sign Up</a></p>
+  <p><a class="btn btn-info btn-lg" href="/users/sign_in" role="button">Sign In</a></p>
+</div>
+
+
+<h3>Recent Updates<h3>
+  
+  <ul>
+    <% @statuses.each do |status| %>
+    <li><%= status.text %> <br> - <%= status.user.username %> <%= time_ago_in_words(status.created_at) %> ago</li>
+    <%end%>
+  </ul>

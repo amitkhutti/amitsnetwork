@@ -1,0 +1,8 @@
+<h1>Dashboard</h1>
+<h2>Updates from people I follow</h2>
+
+<ul>
+  <% @statuses.each do |status| %>
+  <li> <%= status.text %> <br> - <%= status.user.username %> <%= time_ago_in_words(status.created_at) %> ago
+    <%end%>
+</ul>

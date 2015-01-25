@@ -1,0 +1,16 @@
+<% if @profile.id != current_user.id %>
+  <% @isuserfollowing = Follow.where(:follower_id=>current_user.id, :following_id=>@profile.id).count %>
+  <% if @isuserfollowing  == 0 %>
+
+  <%= form_tag(url_for(:action=>'follow', :controller=>'home', :follower_id=>current_user.id, :following_id=>@profile.id),:method=>'post', :remote=>true) do |f| %>
+  <%= button_tag("Follow", type: 'submit', :class=>"btn btn-success") %>
+  <%end%>
+  
+<%else%>
+  
+  <%= form_tag(url_for(:action=>'unfollow', :controller=>'home', :follower_id=>current_user.id, :following_id=>@profile.id),:method=>'post', :remote=>true) do |f| %>
+<%= button_tag("Unfollow", type: 'submit', :class=>"btn btn-danger") %>
+    <%end%>
+
+  <%end%>
+<%end%>
